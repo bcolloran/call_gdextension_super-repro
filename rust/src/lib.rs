@@ -9,8 +9,17 @@ unsafe impl ExtensionLibrary for MyExtension {}
 #[class(base=Node)]
 struct Tester {
     base: Base<Node>,
+
+    /// This is an example of some data that we'd like to store in
+    /// the base class (and which we can use to distinguish between
+    /// instances of the class during debugging).
     #[var]
     init_timestamp: u32,
+    /// This is an example of some data that we'd like to store in
+    /// the base class, but that we want to initialize during the
+    /// `ready` method. To properly initialize this data in a GdScript
+    /// subclass we need to ba able to call `super._ready()` from that
+    /// subclass.
     #[var]
     ready_timestamp: u32,
 }
